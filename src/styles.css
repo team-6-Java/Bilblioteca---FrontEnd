@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+  background: url("assets/bg-page.jpg")!important;
+  background-color: #fff;
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  min-height: 100vh;
+}
