@@ -1,0 +1,77 @@
+<nav class=" navbar navbar-expand-lg navbar-dark corporative-background-color  ">
+
+  <div class="container-fluid">
+
+    <!--LOGO en el navegador-->
+    <a class="navbar-logo" href="login">
+      <img src="assets/img/logo.png" >
+    </a>
+    <a class="navbar-brand" href="index.html">bbp - Leer y Compartir</a>
+
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <!-- buscador de libros-->
+    <form class="d-flex">
+     <div class="input-group">
+
+    <!--selector de busqueda para el buscador de libros-->
+    <div class="dropdown collapse navbar-collapse ">
+      <button class="btn btn-secondary dropdown-toggle complementary-background-color1 color-letra" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Buscar por...
+      </button>
+
+      <div class="dropdown-menu " aria-labelledby="dropdownMenu2">
+        <button class="dropdown-item" type="button">Autor</button>
+        <button class="dropdown-item" type="button">Titulo</button>
+        <button class="dropdown-item" type="button">Editorial</button>
+        <button class="dropdown-item" type="button">Propietario</button>
+      </div>
+    </div>
+
+    <!-- buscador -->
+
+
+    <div class="dropdown collapse navbar-collapse ">
+        <input class="form-control me-2" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
+
+        <!--boton lupa-->
+
+          <button class="btn btn-primary complementary-background-color1 color-letra" type="button">     <i class="fas fa-search"></i></button>
+      </div>
+
+  </div>
+</form>
+
+
+ <!--boton chat-->
+
+ <a href="chat" class="btn btn-info  complementary-background-color1 color-letra" >Chat </a>
+ &nbsp; &nbsp; &nbsp; &nbsp;
+
+ <!--boton registrar libro-->
+
+ <a href="registrarlibro" class="btn btn-info complementary-background-color4 ">¡Registrar libro!</a>
+
+
+
+
+
+    </div>
+  </div>
+  <!-- Navbar menu desplegable de Settings-->
+ <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+  <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+          <a class="dropdown-item" href="perfil">Mi Perfil</a>
+          <a class="dropdown-item" href="mibiblioteca">Mi Biblioteca</a>
+          <a class="dropdown-item" href="chat">Mi Chat</a>
+          <a class="dropdown-item" href="ayuda">Ayuda</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="acercade">Acerca de</a>
+          <a class="dropdown-item" href="login">Logout</a>
+      </div>
+  </li>
+</ul>
+</nav>

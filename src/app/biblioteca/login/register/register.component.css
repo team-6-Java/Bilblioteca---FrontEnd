@@ -1,0 +1,99 @@
+.bg-dark {
+  background: rgb(226,0,116); background: linear-gradient(45deg, rgba(226,0,116,1) 60%, rgba(236,125,39,1) 95%)!important;
+}
+
+.animation-floating{
+  -webkit-animation: floating 8s ease-in-out infinite;
+  animation: floating 8s ease-in-out infinite;
+    animation-duration: 8s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-fill-mode: none;
+    animation-play-state: running;
+    animation-name: floating;
+    will-change: transform;
+    width: 50%;
+}
+
+.bg-login-image{
+  background-size: contain;
+  background-repeat: no-repeat;
+  /*top:13%;*/
+}
+
+.text2{
+  font-size: 350%;
+  font-family: 'Dancing Script', cursive;
+  /*top:13%;*/
+}
+
+.text3{
+  font-size: 664%;
+  font-family: 'Dancing Script', cursive;
+  /*top:13%;*/
+}
+
+.bg-personal{
+  background:#fafaf8;
+}
+
+.btn:hover{
+  background: #e20074;
+  box-shadow: inset 0 0 0 1px rgb(236, 28, 36);
+  color:  #fff!important;
+  font-weight:800 ;
+}
+
+.btn-primary:hover{
+  background: #fff;
+  box-shadow: inset 0 0 0 1px rgb(236, 28, 36);
+  color:  #e20074!important;
+  font-weight:800 ;
+}
+
+
+  .btn-primary{
+    background: #e20074;
+    box-shadow: inset 0 0 0 1px rgb(236, 28, 36);
+    transition:  color .5s;
+  }
+
+  .btn-google, .btn-facebook{
+    background: #fff;
+    color:#e20074!important;
+    box-shadow: inset 0 0 0 1px rgb(0, 0, 0);
+    transition: color .5s;
+
+  }
+
+
+  @keyframes floating{
+    0% {
+        transform: translateY(-5%) rotate(3deg);
+    }
+    65% {
+      transform: translateY(5%) rotate(-3deg);
+    }
+    100% {
+      transform: translateY(-5%) rotate(3deg);
+    }
+    }
+
+    .imagen-fondo{
+      background-image: url("src/assets/img/register.jpg");
+      background-size: cover;
+      background-position: right bottom, left top;
+      background-repeat:  repeat;
+
+      min-height: 100vh;
+
+    }
+
+    .center {
+      margin: auto;
+      width: 50%;
+
+      padding: 40px;
+    }
