@@ -1,0 +1,57 @@
+body {
+  background-color: #ffffff;
+  background-image: linear-gradient(90deg, #ffffff 0%, #E62086 600%);
+
+  min-height: 100vh;
+}
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+.corporative-background-color{
+  background: #20E680
+
+
+  ;
+
+}
+
+.background-color1{
+  background-color: #E62086
+  ;
+}
+
+.complementary-background-color2{
+    background: #2086E6
+    ;
+
+  }
+
+  .complementary-background-color3{
+    background:  #E68020
+    ;
+
+  }
+
+.complementary-background-color4{
+  background:  #0fdb72
+  ;
+
+}
+  .imagen-fondo{
+    background-image: url("src/assets/img/bg-page.jpg");
+    background-size: cover;
+    background-position: right bottom, left top;
+    background-repeat:  repeat;
+  }
