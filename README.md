@@ -41,5 +41,3 @@ Maven 4.0
 Postman 8.0
 
 ```
-![banerGit](https://github.com/team-6-Java/Biblioteca-CRUD_ER_MySQL/blob/main/1.png)
-![banerGit](https://github.com/team-6-Java/Biblioteca-CRUD_ER_MySQL/blob/main/2.png)
