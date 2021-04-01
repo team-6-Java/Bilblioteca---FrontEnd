@@ -12,7 +12,7 @@
 
 ### 1. Descripción
 
-En este repositorio se encuentran todos los archivos relacionados con el proceso de creacion del Backend del proyecto final.
+En este repositorio se encuentran todos los archivos relacionados con el proceso de creacion del Frontend del proyecto final.
  
 En el Main se encuentra la seccion del proyecto finalizada y en las ramas las diferentes contribuciones por los miembros del equipo
 ```
