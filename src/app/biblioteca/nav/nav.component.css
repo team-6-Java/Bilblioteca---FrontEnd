@@ -65,3 +65,16 @@
   background: #757575
 }
 
+@media (min-width: 300px){
+  .navbar-expand-lg .navbar-nav .dropdown-menu {
+      position: absolute;
+  }}
+
+  @media (max-width: 415px){
+    .dropdown-menu-right {
+      right: auto;
+      left: auto;
+  }
+
+
+  }

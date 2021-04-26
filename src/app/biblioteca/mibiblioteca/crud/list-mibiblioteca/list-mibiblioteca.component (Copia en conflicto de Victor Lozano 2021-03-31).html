@@ -1,0 +1,288 @@
+<app-nav></app-nav>
+
+<app-editorial></app-editorial>
+<app-autor></app-autor>
+
+<body>
+
+    <!-- Anuncion Incial-->
+    <section class="py-1 text-center container ">
+        <div class="row py-lg-1">
+            <div class="col-sm ">
+                <h1 class="fw-light">Mi Biblioteca</h1>
+                <p class="lead text-muted">Aqui podrás ver, registrar, editar y eliminar tus libros</p>
+                <p>
+                    <a href="registrarlibro" class="btn btn-primary my-2 complementary-background-color4">Registrar nuevo libro</a>
+
+                    <!-- <a href="#" class="btn btn-secondary my-2">Editar libro existente</a> -->
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- LIBROS EN LA LISTA -->
+    <div class="album py-5  imagen-fondo">
+        <div class="container">
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <ng-container *ngFor="let lib of libros | async ">
+                    <div class="col" *ngIf="lib.usuario.username==user">
+                        <div class="card shadow-sm">
+                            <svg class="bd-placeholder-img card-img-top imagen-recuadro" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#E62086"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Aqui va la imagen de tu libro</text></svg>
+
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item" name="titulo">Titulo: {{lib.titulo}}</li>
+                                    <li class="list-group-item">Autor: {{lib.autor.nombre}} {{lib.autor.apellido}}</li>
+                                    <li class="list-group-item">Editorial: {{lib.editorial.nombre}}</li>
+                                    <li class="list-group-item">ISBN: {{lib.isbn}}</li>
+
+                                </ul>
+
+                            </div>
+                            <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#modalMiBiblioteca" (click)="metodo(lib)">Ver más </button>
+                            <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#editar" (click)="metodo(lib)">Editar </button>
+                            <button type="button" class="btn btn-danger" (click)="deleteLibro(lib.id)">Borrar </button>
+                        </div>
+                    </div> &nbsp;
+
+
+
+
+
+
+
+
+                </ng-container>
+            </div>
+        </div>
+    </div>
+
+
+    <!--Modal ver mas-->
+    <div class="modal fade" id="modalMiBiblioteca" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ver más</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+                </div>
+                <div class="modal-body">
+
+                    <form>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Titulo:</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext" name="titulo" [(ngModel)]="libro.titulo">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Autor:</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext"> {{libro.autor.nombre!}} {{libro.autor.apellido!}}
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Editorial:</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext">{{libro.editorial.nombre!}}
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Paginas:</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext">{{libro.paginas!}}
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">ISBN:</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext">{{libro.isbn!}}
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Tematica:</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext">{{libro.tematica!}}
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Descripcion:</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext">{{libro.descripcion!}}
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Estado:</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext">{{libro.estado!}}
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Veces prestado:</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext">{{libro.veces_prestado!}}
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Propietario:</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext">{{libro.usuario.username!}}
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Email:</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext">{{libro.usuario.email!}}
+                            </div>
+                        </div>
+                        <!--
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFile">
+                            <label class="custom-file-label" for="customFile">Imagen libro</label>
+                        </div>
+                        -->
+                    </form>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!--Modal editar-->
+    <div class="modal fade" id="editar" tabindex="-1" data-focus-on="input:first">
+        <div class="modal-dialog" role="dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Editar</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                </div>
+                <div class="modal-body">
+
+                    <form>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Titulo:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control-plaintext" name="titulo" [(ngModel)]="libro.titulo">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Autor:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control-plaintext" id="autor" name="autorName" readonly [(ngModel)]="libro.autor.nombre + ' ' +libro.autor.apellido">
+                                <div class="dropdown show">
+                                    <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="ngOnInit()">
+
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                            <ng-container *ngFor='let autor of autores | async'>
+                                                <a class="dropdown-item" (click)='ponerAutor(autor.id, autor.nombre, autor.apellido)'>{{autor.nombre}} {{autor.apellido}}</a>
+                                            </ng-container>
+                                        </div>
+
+                                    </a>
+                                    <button class="btn btn-primary ml-2" type="button" data-toggle="modal" data-target="#autorModal">Crear</button>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Editorial:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control-plaintext" id="editorial" name="editorial" readonly [(ngModel)]="libro.editorial.nombre">
+
+                                <div class="dropdown show">
+                                    <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="ngOnInit()">
+
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                            <ng-container *ngFor='let editorial of editoriales | async'>
+                                                <a class="dropdown-item" (click)='ponerEditorial(editorial.id, editorial.nombre)'>{{editorial.nombre}}</a>
+                                            </ng-container>
+                                        </div>
+
+                                    </a>
+                                    <a class="btn btn-primary ml-2" type="button" data-toggle="modal" href="#editorialModal">Crear</a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Paginas:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control-plaintext" name="paginas" [(ngModel)]="libro.paginas">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">ISBN:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control-plaintext" name="isbn" [(ngModel)]="libro.isbn">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Tematica:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control-plaintext" name="tematica" [(ngModel)]="libro.tematica">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Descripcion:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control-plaintext" name="descripcion" [(ngModel)]="libro.descripcion">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Estado:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control-plaintext" name="estado" [(ngModel)]="libro.estado">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Veces prestado:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control-plaintext" name="prestado" [(ngModel)]="libro.veces_prestado">
+                            </div>
+                        </div>
+                        <!--
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFile">
+                            <label class="custom-file-label" for="customFile">Imagen libro</label>
+                        </div>
+                    -->
+                    </form>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" (click)='updateLibro(libro.id)'>Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>

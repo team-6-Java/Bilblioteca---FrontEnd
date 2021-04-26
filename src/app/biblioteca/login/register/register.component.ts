@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
+import {Perfil } from '../../perfil/model/perfil';
+import {PerfilService } from '../../perfil/service/perfil.service';
 
 @Component({
   selector: 'app-register',
@@ -13,10 +15,20 @@ export class RegisterComponent implements OnInit {
     password: null
   };
   isSuccessful = false;
-  isSignUpFailed = false;
   errorMessage = '';
+  isSignUpFailed = false;
 
-  constructor(private authService: AuthService) { }
+
+  perfil :Perfil={
+    username:'',
+    nombre:'',
+    apellido: '',
+    email: '',
+    contraseña: '',
+    descripcion: '',
+    imagen: '',
+  }
+  constructor(private authService: AuthService, private crudPerfil:PerfilService) { }
 
   ngOnInit(): void {
   }
@@ -29,6 +41,12 @@ export class RegisterComponent implements OnInit {
         console.log(data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
+        this.perfil={
+          username:username,
+          contraseña:"password",
+          email:email
+        }
+        //this.crearUsuario(this.perfil);
       },
       err => {
         this.errorMessage = err.error.message;
@@ -36,5 +54,21 @@ export class RegisterComponent implements OnInit {
       }
     );
   }
-}
 
+/*
+  crearUsuario(perfil:Perfil){
+      this.crudPerfil.createPerfil(perfil).subscribe(
+      data => {
+        console.log(data);
+
+
+
+      },
+      err => {
+       console.log(err);
+
+      }
+      )
+
+  } */
+}

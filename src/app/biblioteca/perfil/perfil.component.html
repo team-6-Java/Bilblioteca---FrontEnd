@@ -1,7 +1,8 @@
 
 
-<app-nav></app-nav>
 
+<app-nav>
+</app-nav>
 
 
 
@@ -28,30 +29,117 @@
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3  ">
         <div></div>
           <div class="card shadow-sm ">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="325" xmlns="http://www.w3.org/2000/svg"
-            role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#E62086"/><text x="50%" y="50%" fill="#ffffff" dy=".3em">Aqui va tu imagen de perfil</text></svg>
+            <img  src="../../../assets/img/user.jpg">
+
 
             <div class="card-body ">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">Usuario: </li>
-                <li class="list-group-item">Nombre: </li>
-                <li class="list-group-item">Apellido: </li>
-                <li class="list-group-item">Email: </li>
-                <li class="list-group-item">Descripción: </li>
-
-              </ul>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-
-                  <a type="button" class="btn btn-sm btn-outline-secondary" href="modificarperfil">Editar</a>
 
 
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Eliminar</button>
+              <form #f="ngForm" (ngSubmit)="f.form.valid && updatePerfil()" novalidate >
 
+                <div class="form-group row">
+
+                    <label for="userUsername" class="col-sm-4 col-form-label">Username:</label>
+                    <div class="col-sm-8">
+                      <input type="text" name="username" class="form-control-plaintext" id="userUsername" readonly value={{perfil.username}} [(ngModel)]="perfil.username" required #username="ngModel">
+                    </div>
+
+                    <div class="alert alert-danger" role="alert" *ngIf="username.errors && f.submitted">
+                        is required!
+                    </div>
                 </div>
 
-               <!-- <small class="text-muted">9 mins</small> -->
+                <div class="form-group row">
+
+                  <label for="userEmail" class="col-sm-4 col-form-label">Email:</label>
+                  <div class="col-sm-8">
+                    <input type="text" name="email" class="form-control-plaintext" id="userEmail" readonly value={{perfil.email}} [(ngModel)]="perfil.email" required #email="ngModel" email>
+                  </div>
+
+                  <div class="alert alert-danger" role="alert" *ngIf="email.errors && f.submitted">
+                      Email is required!
+                  </div>
+
               </div>
+
+                <div class="form-group row">
+
+                  <label for="userNombre" class="col-sm-4 col-form-label">Nombre:</label>
+                  <div class="col-sm-8">
+                    <input type="text" name="nombre" class="form-control-plaintext" id="userNombre" value={{perfil.nombre}} [(ngModel)]="perfil.nombre" required #nombre="ngModel">
+                  </div>
+
+                  <div class="alert alert-danger" role="alert" *ngIf="nombre.errors && f.submitted">
+                     nombre is required!
+                  </div>
+              </div>
+
+
+
+              <div class="form-group row">
+
+                <label for="userApellido" class="col-sm-4 col-form-label">Apellido:</label>
+                <div class="col-sm-8">
+                  <input type="text" name="apellido" class="form-control-plaintext" id="userApellido" value={{perfil.apellido}} [(ngModel)]="perfil.apellido" required #apellido="ngModel">
+                </div>
+
+                <div class="alert alert-danger" role="alert" *ngIf=" f.submitted">
+                    is required!
+                </div>
+            </div>
+
+
+
+          <div class="form-group row">
+
+            <label for="userDescripcion" class="col-sm-4 col-form-label">Descripción:</label>
+            <div class="col-sm-8">
+              <input type="text" name="descripcion" class="form-control-plaintext" id="userDescripcion" value={{perfil.descripcion}} [(ngModel)]="perfil.descripcion" required >
+            </div>
+
+            <div class="alert alert-danger" role="alert" *ngIf=" f.submitted">
+                is required!
+            </div>
+        </div>
+
+        <div class="form-group row">
+
+          <!--<label for="staticEmail" class="col-sm-4 col-form-label">foto:</label>
+          <div class="col-sm-8">
+            <input type="file" class="form-control-plaintext" id="staticEmail" readonly value={{perfil.contraseña}} [(ngModel)]="perfil.contraseña" required>
+          </div>
+
+          <div class="alert alert-danger" role="alert" *ngIf=" f.submitted">
+              is required!
+          </div> -->
+      </div>
+
+
+      <div class="alert alert-danger" role="alert" *ngIf="f.submitted && isUpdate">
+        Update failed:<br /> {{ errorMessage }}
+      </div>
+
+      <div class="alert alert-success" *ngIf="f.submitted && isSuccessful">
+        Your Update is successful!
+      </div>
+
+      <div class="btn-group">
+        <button type="button" class="btn btn-sm btn-outline-secondary" (click)="updatePerfil()  ">Actualizar</button>
+      </div>
+
+
+
+    </form>
+
+
+
+
+              <div class="d-flex justify-content-between align-items-center ">
+
+
+              </div>
+
+
             </div>
           </div>
         </div>
@@ -65,6 +153,8 @@
       </div>
     </div>
 </div>
+
+
 </body>
 
 

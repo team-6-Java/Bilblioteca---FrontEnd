@@ -1,26 +1,25 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { TokenStorageService } from '../../login/_services/token-storage.service';
+import { getLocaleDateFormat } from '@angular/common';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class MiBibliotecaService {
+  private baseUrl =
+    'http://82.223.78.142:8080/biblioteca/biblioteca/content/libro';
 
-  private baseUrl = 'http://82.223.78.142:8080/biblioteca/biblioteca/content/libro';
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private token: TokenStorageService) {}
 
   getLibro(id: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/${id}`);
+    return this.http.get(this.baseUrl + "/" + id);
   }
 
-  createLibro(libro: Object): Observable<Object> {
-    return this.http.post(`${this.baseUrl}`, libro);
-  }
-
-  updateLibro(id: number, value: any): Observable<Object> {
+  updateLibro(id: number, value: {}): Observable<Object> {
+    console.log(this.baseUrl+"/"+id, value);
     return this.http.put(`${this.baseUrl}/${id}`, value);
   }
 
@@ -29,6 +28,7 @@ export class MiBibliotecaService {
   }
 
   getLibroList(): Observable<any> {
-    return this.http.get(`${this.baseUrl}`);
+    return this.http.get(this.baseUrl)
   }
 }
+
